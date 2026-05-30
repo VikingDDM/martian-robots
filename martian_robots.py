@@ -78,6 +78,18 @@ def solve(input_text):
 
 
 if __name__ == "__main__":
-    import sys
+    print("Enter the Martian Robots input below.")
+    print("When finished, press Enter, then Ctrl+D on Mac/Linux or Ctrl+Z then Enter on Windows:\n")
 
-    print(solve(sys.stdin.read()))
+    user_input = []
+    try:
+        while True:
+            user_input.append(input())
+    except EOFError:
+        pass
+
+    input_text = "\n".join(user_input)
+    output = solve(input_text)
+
+    print("\nOutput:")
+    print(output)
