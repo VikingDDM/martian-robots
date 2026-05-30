@@ -50,3 +50,28 @@ class MarsWorld:
 
         robot.x = next_x
         robot.y = next_y
+
+
+def solve(input_text):
+    lines = [line.strip() for line in input_text.splitlines() if line.strip()]
+    max_x, max_y = map(int, lines[0].split())
+
+    world = MarsWorld(max_x, max_y)
+    results = []
+
+    i = 1
+    while i < len(lines):
+        x, y, direction = lines[i].split()
+        instructions = lines[i + 1]
+
+        robot = Robot(int(x), int(y), direction)
+        world.run(robot, instructions)
+
+        result = f"{robot.x} {robot.y} {robot.direction}"
+        if robot.lost:
+            result += " LOST"
+
+        results.append(result)
+        i += 2
+
+    return "\n".join(results)
