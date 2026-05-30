@@ -75,3 +75,9 @@ def solve(input_text):
         i += 2
 
     return "\n".join(results)
+
+
+if __name__ == "__main__":
+    import sys
+
+    print(solve(sys.stdin.read()))
